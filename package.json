@@ -1,0 +1,30 @@
+{
+  "name": "@frendable/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@changesets/changelog-github": "^0.2.1",
+    "@changesets/cli": "^2.5.0",
+    "@manypkg/cli": "^0.12.0",
+    "@preconstruct/cli": "^1.1.14",
+    "typescript": "^3.5.3"
+  },
+  "preconstruct": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "postinstall": "preconstruct dev && manypkg check",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "preconstruct build && changeset publish"
+  }
+}
